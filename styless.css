@@ -1,0 +1,53 @@
+/* Typing Animation Styles */
+
+.typing-container {
+    position: fixed;
+    bottom: 70%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    z-index: 100;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 80%;
+  }
+  
+  .typing-text {
+    color: #fff;
+    font-size: 80px;
+    font-family: 'Sacramento', cursive;
+    text-shadow: 0 0 10px #44baff;
+    white-space: pre-wrap;
+    line-height: 1.5;
+  }
+  
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .typing-text {
+      font-size: 50px;
+    }
+    
+    .typing-container {
+      bottom: 60%;
+      padding: 15px;
+      width: 500px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .typing-text {
+      font-size: 50px;
+    }
+    
+    .typing-container {
+      bottom: 60%;
+      padding: 15px;
+      width: 500px;
+    }
+  }
