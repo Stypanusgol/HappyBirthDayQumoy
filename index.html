@@ -6,9 +6,43 @@
     <title>Ucapan Ulang Tahun</title>
     <link rel="icon" href="party-hat.png" type="image/png" />
     <link rel="stylesheet" href="styleku.css" />
+    <style>
+      /* Style countdown */
+      #countdown-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: black;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        font-family: "Poppins", sans-serif;
+        text-align: center;
+        z-index: 9999;
+      }
+
+      #countdown {
+        font-size: 2rem;
+        margin-top: 20px;
+      }
+      .hidden {
+        display: none;
+      }
+    </style>
   </head>
   <body>
-    <div class="container">
+    <!-- Countdown screen -->
+    <div id="countdown-container">
+      <h1>🎂 Tunggu yaa, Borunaa...</h1>
+      <p id="countdown"></p>
+    </div>
+
+    <!-- Happy Birthday screen (disembunyikan dulu) -->
+    <div class="container hidden" id="birthday-container">
       <div class="stars"></div>
       <div class="twinkling"></div>
 
@@ -46,6 +80,9 @@
       </div>
     </div>
 
+    <!-- Countdown logic -->
+    <script src="countdown.js"></script>
+    <!-- Animasi & logika web ulang tahun -->
     <script src="script.js"></script>
   </body>
 </html>
