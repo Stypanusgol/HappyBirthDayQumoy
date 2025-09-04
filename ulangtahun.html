@@ -330,5 +330,16 @@
     </div>
     <script src="script.js"></script>
     <script src="scripts.js"></script>
+    <script>
+      // Kalau halaman ini direfresh, langsung redirect ke index.html
+      if (performance.navigation.type === performance.navigation.TYPE_RELOAD) {
+        window.location.href = "index.html";
+      }
+
+      // Untuk browser modern (Navigation API)
+      if (performance.getEntriesByType("navigation")[0].type === "reload") {
+        window.location.href = "index.html";
+      }
+    </script>
   </body>
 </html>
