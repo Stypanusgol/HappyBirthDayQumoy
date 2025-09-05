@@ -1,14 +1,16 @@
-// 🎯 Target waktu = jam 00:00 tanggal besok
-const now = new Date();
-const targetDate = new Date(
-  now.getFullYear(),
-  now.getMonth(),
-  now.getDate() + 1, // besok
-  0,
-  0,
-  0,
-  0
-).getTime();
+// countdown.js
+
+// 🎯 Cek apakah sudah ada target di localStorage
+let targetDate = localStorage.getItem("birthdayTarget");
+
+if (!targetDate) {
+  // Kalau belum ada → set target baru (10 detik dari sekarang untuk test)
+  const now = new Date();
+  targetDate = new Date(now.getTime() + 30 * 60 * 1000).getTime();
+  localStorage.setItem("birthdayTarget", targetDate);
+} else {
+  targetDate = parseInt(targetDate); // konversi string → number
+}
 
 const countdownContainer = document.getElementById("countdown-container");
 const birthdayContainer = document.getElementById("birthday-container");
@@ -19,24 +21,18 @@ const timer = setInterval(function () {
   const distance = targetDate - now;
 
   if (distance > 0) {
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const hours = Math.floor(
-      (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-    );
     const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-    countdownElement.innerHTML =
-      days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+    countdownElement.innerHTML = minutes + "m " + seconds + "s ";
   } else {
     clearInterval(timer);
 
     // ✨ Fade-out countdown
-    countdownContainer.style.transition = "opacity 1s ease";
     countdownContainer.style.opacity = "0";
 
     setTimeout(() => {
-      // Hilangkan layer hitam
+      // Hilangkan countdown
       countdownContainer.style.display = "none";
       countdownContainer.style.zIndex = "-1";
 
